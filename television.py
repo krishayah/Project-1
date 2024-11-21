@@ -11,7 +11,7 @@ class Television:
         self._volume = self.MIN_VOLUME
         self._channel = self.MAX_VOLUME
 
-        def power(self):
+    def power(self):
             self._status == self._status #??
 
         def mute(self):
