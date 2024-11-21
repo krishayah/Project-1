@@ -3,7 +3,6 @@ class Television:
     Class with basic functionality of TV
     """
     # Default values
-        self._status = False
     MIN_VOLUME: int = 0
     MAX_VOLUME: int = 2
     MIN_CHANNEL: int = 0
