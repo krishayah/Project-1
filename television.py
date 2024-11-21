@@ -1,5 +1,4 @@
 class Television:
-    p0-]m,#default values
     #default values
     MIN_VOLUME = 0
     MAX_VOLUME = 2
