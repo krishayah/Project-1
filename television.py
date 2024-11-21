@@ -26,7 +26,7 @@ class Television:
 
         def channel_up(self):
             if self._status: #only works when TV's ON
-                self._channel = self.MIN-CHANNEL if self._channel == self.MAX_CHANNEL else self.channel + 1
+                self._channel = self.MIN_CHANNEL if self._channel == self.MAX_CHANNEL else self.channel + 1
 
         def channel_down(self):
             if self._status:
@@ -45,7 +45,7 @@ class Television:
                 if self._muted:
                     self._muted = False
                     self._volume = self._previous_volume
-                if self._volume > self..MIN_VOLUME:
+                if self._volume > self.MIN_VOLUME:
                     self._volume -= 1
 
         def __str__(self):
