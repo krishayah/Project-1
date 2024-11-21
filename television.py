@@ -38,7 +38,7 @@ class Television:
                     self._muted = False
                     self._volume = self._previous_volume
                 if self._volume < self.MAX_VOLUME:
-                    self,_volume += 1
+                    self._volume += 1
 
         def volume_down(self):
             if self._status:
