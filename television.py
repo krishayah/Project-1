@@ -10,6 +10,7 @@ class Television:
         self._muted = False
         self._volume = self.MIN_VOLUME
         self._channel = self.MIN_CHANNEL  # Start at minimum channel
+        self._previous_volume = self.MIN_VOLUME
 
     def power(self):
         self._status = not self._status  # Toggle power
