@@ -1,5 +1,4 @@
-from television import Television  # import statement needed to gain access to Television class
-
+from television import *  # import statement needed to gain access to Television class
 
 def main():
     # Television 1
