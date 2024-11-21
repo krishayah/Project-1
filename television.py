@@ -12,7 +12,7 @@ class Television:
         self._channel = self.MIN_CHANNEL
 
     def power(self):
-            self._status = not self._status #??
+            self._status = not self._status 
 
     def mute(self):
             if self._status: #only works when TV's ON
