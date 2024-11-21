@@ -1,53 +1,56 @@
-class Television:
-    # Default values
-    MIN_VOLUME = 0
-    MAX_VOLUME = 2
-    MIN_CHANNEL = 0
-    MAX_CHANNEL = 3
+from television import *  # import statement needed to gain access to Television class
 
-    def __init__(self):
-        self._status = False
-        self._muted = False
-        self._volume = self.MIN_VOLUME
-        self._channel = self.MIN_CHANNEL  # Start at minimum channel
+def main():
+    # Television 1
+    tv_1 = Television()
+    tv_1.power()
+    print(tv_1)             # Power = True, Channel = 0, Volume = 0
 
-    def power(self):
-        self._status = not self._status  # Toggle power
+    tv_1.channel_up()
+    tv_1.channel_up()
+    tv_1.volume_up()
+    print(tv_1)             # Power = True, Channel = 2, Volume = 1
 
-    def mute(self):
-        if self._status:  # Only works when TV is ON
-            if self._muted:
-                self._muted = False
-                self._volume = self._previous_volume
-            else:
-                self._muted = True
-                self._previous_volume = self._volume
-                self._volume = self.MIN_VOLUME
+    tv_1.channel_up()
+    tv_1.channel_up()
+    tv_1.channel_up()
+    tv_1.volume_down()
+    tv_1.volume_down()
+    print(tv_1)             # Power = True, Channel = 1, Volume = 0
 
-    def channel_up(self):
-        if self._status:  # Only works when TV is ON
-            self._channel = self.MIN_CHANNEL if self._channel == self.MAX_CHANNEL else self._channel + 1
+    tv_1.power()
+    tv_1.volume_up()
+    tv_1.channel_down()
+    print(tv_1)             # Power = False, Channel = 1, Volume = 0
 
-    def channel_down(self):
-        if self._status:  # Only works when TV is ON
-            self._channel = self.MAX_CHANNEL if self._channel == self.MIN_CHANNEL else self._channel - 1
+    tv_1.power()
+    tv_1.volume_up()
+    tv_1.volume_up()
+    tv_1.volume_up()
+    tv_1.channel_down()
+    tv_1.channel_down()
+    print(tv_1)             # Power = True, Channel = 3, Volume = 2
 
-    def volume_up(self):
-        if self._status:  # Only works when TV is ON
-            if self._muted:
-                self._muted = False
-                self._volume = self._previous_volume
-            if self._volume < self.MAX_VOLUME:
-                self._volume += 1
+    # Television 2
+    tv_2 = Television()
+    tv_2.power()
+    tv_2.channel_up()
+    tv_2.volume_up()
+    print(tv_2)             # Power = True, Channel = 1, Volume = 1
 
-    def volume_down(self):
-        if self._status:  # Only works when TV is ON
-            if self._muted:
-                self._muted = False
-                self._volume = self._previous_volume
-            if self._volume > self.MIN_VOLUME:
-                self._volume -= 1
+    # Muting effect
+    tv_1.mute()
+    print(tv_1)             # Power = True, Channel = 3, Volume = 0
+    tv_1.volume_down()
+    print(tv_1)             # Power = True, Channel = 3, Volume = 1
+    tv_1.mute()
+    print(tv_1)             # Power = True, Channel = 3, Volume = 0
+    tv_1.volume_up()
+    print(tv_1)             # Power = True, Channel = 3, Volume = 2
+    tv_1.power()
+    tv_1.mute()
+    print(tv_1)             # Power = False, Channel = 3, Volume = 2
 
-    def __str__(self):
-        return f"Power = {self._status}, Channel = {self._channel}, Volume = {self._volume}"
 
+if __name__ == '__main__':
+    main()
