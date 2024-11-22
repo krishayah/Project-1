@@ -45,7 +45,7 @@ def test_channel_up():
     TV.channel_up() #channel = 1
     assert str(TV) == "Power = True, Channel = 1, Volume = 0"
 
-    #test increasing channel past Max Value
+    #test increasing channel past MAX_CHANNEL
     for _ in range (4):
         TV.channel_up()
     assert str(TV) == "Power = True, Channel = 0, Volume = 0"
@@ -105,11 +105,11 @@ def test_volume_down():
 
     #test decreasing volume when TV's ON & MUTED
     TV.mute()  #mutes
-    TV.volume_down()
-    assert str(TV) == "Power = True, Channel = 0, Volume = 1"  # Volume stays consistent while muted
+    TV.volume_down()  #unmutes & decrease volume
+    assert str(TV) == "Power = True, Channel = 0, Volume = 0"  # Volume stays consistent while muted
 
-    # Test decreasing the volume past the minimum value
-    for _ in range(3): 
+    # Test decreasing the volume past the MINIMUM value
+    for _ in range(3):
         TV.volume_down()
     assert str(TV) == "Power = True, Channel = 0, Volume = 0"  # Volume should not go below MIN_VOLUME
 
