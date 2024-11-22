@@ -63,12 +63,55 @@ def test_channel_down():
     TV.channel_down() 
     assert str(TV) == "Power = True, Channel = 3, Volume = 0"  # Wraps around to MAX_CHANNEL (3)
 
-    #test decreasing channel past the Minimum value (wraps around)
+    #test decreasing channel past the Minimum value (wraps around MAX_CHANNEL)
     TV.channel_down()
-    assert str(TV) == "Power = True, Channel = 3, Volume = 0"
+    assert str(TV) == "Power = True, Channel = 2, Volume = 0"
    
+def volume_up():
+    TV = Television()
 
+    #test ^ volume when TV's OFF
+    TV.volume_up()
+    assert str(TV) == "Power = False, Channel = 0, Volume = 0"  # Volume shouldn't change
 
+    #test ^ volume when TV's ON
+    TV.power()
+    TV.volume_up()
+    assert str(TV) == "Power = True, Channel = 0, Volume = 1"  # Volume should increase
+
+    #test increasing volume when TV's on & Muted
+    TV.mute()  #mutes TV
+    TV.volume_up()
+    assert str(TV) == "Power = True, Channel = 0, Volume = 1"  # Unmuted, volume stays consistent
+
+    #test ^ volume past the max volume
+    for _ in range(3):
+        TV.volume_up()
+    assert str(TV) == "Power = True, Channel = 0, Volume = 2"  # Volume should not exceed MAX_VOLUME
+
+def test_volume_down():
+    TV = Television()
+
+    #test decreasing volume when TV's OFF
+    TV.volume_down()
+    assert str(TV) == "Power = False, Channel = 0, Volume = 0"  # Volume shouldn't change
+
+    #test decreasing volume when TV's ON
+    TV.power()  #turns ON
+    for _ in range(3):
+        TV.volume_up()
+    TV.volume_down()
+    assert str(TV) == "Power = True, Channel = 0, Volume = 1"  # Volume should decrease
+
+    #test decreasing volume when TV's ON & MUTED
+    TV.mute()  #mutes
+    TV.volume_down()
+    assert str(TV) == "Power = True, Channel = 0, Volume = 1"  # Volume stays consistent while muted
+
+    # Test decreasing the volume past the minimum value
+    for _ in range(3): 
+        TV.volume_down()
+    assert str(TV) == "Power = True, Channel = 0, Volume = 0"  # Volume should not go below MIN_VOLUME
 
 
 
