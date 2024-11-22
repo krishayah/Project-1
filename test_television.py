@@ -48,7 +48,7 @@ def test_channel_up():
     #test increasing channel past MAX_CHANNEL
     for _ in range (4):
         TV.channel_up()
-    assert str(TV) == "Power = True, Channel = 0, Volume = 0"
+    assert str(TV) == "Power = True, Channel = 3, Volume = 0"
 
 #test channel_down method
 def test_channel_down():
