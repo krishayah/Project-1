@@ -18,19 +18,19 @@ def test_power_ON():
 def test_mute():
     TV = Television()
 
-    #Test Muting TV when it's on, after increasing volume
-    TV.power() #turn TV ON
-    TV.volume_up()  #increases Volume by 1
-    TV.mute()  #Mutes the TV
-    assert str(TV) == "Power = True, Channel = 0, Volume = 0"  # Volume should be 0 when muted
-
-    #test unmuting the TV
-    TV.mute()  #Unmutes
-    assert str(TV) == "Power = True, Channel = 0, Volume = 1"
-
-    #test muting when TV's OFF
-    TV.mute()
-    assert str(TV) == "Power = False, Channel = 0, Volume = 0"  #WHen TV's off, VOlume = 0
+    # Test muting when the TV is off (no effect expected)
+    TV.mute()  
+    assert str(TV) == "Power = False, Channel = 0, Volume = 0"  # No change expected
+    
+    # Test muting when the TV is on
+    TV.power()  # Turn the TV on
+    TV.volume_up()  # Volume = 1
+    TV.mute()  # Mute
+    assert str(TV) == "Power = True, Channel = 0, Volume = 0"  # Volume should be 0 (muted)
+    
+    # Test unmuting
+    TV.mute()  # Unmute
+    assert str(TV) == "Power = True, Channel = 0, Volume = 1"  # Volume restored to 1
 
 #test Channel_up method
 def test_channel_up():
@@ -42,7 +42,7 @@ def test_channel_up():
 
     #test increasing channel when TV's ON
     TV.power()  #to turn ON
-    TV.channel_up()  #i ^ channel
+    TV.channel_up() #channel = 1
     assert str(TV) == "Power = True, Channel = 1, Volume = 0"
 
     #test increasing channel past Max Value
@@ -100,7 +100,7 @@ def test_volume_down():
     TV.power()  #turns ON
     for _ in range(3):
         TV.volume_up()
-    TV.volume_down()
+    TV.volume_down() #Volume = 1
     assert str(TV) == "Power = True, Channel = 0, Volume = 1"  # Volume should decrease
 
     #test decreasing volume when TV's ON & MUTED
