@@ -18,5 +18,19 @@ def test_power_ON():
 def test_mute():
     TV = Television()
 
-    
+    #Test Muting TV when it's on, after increasing volume
+    TV.power() #turn TV ON
+    TV.volume_up()  #increases Volume by 1
+    TV.mute()  #Mutes the TV
+    assert str(TV) == "Power = True, Channel = 0, Volume = 0"  # Volume should be 0 when muted
+
+    #test unmuting the TV
+    TV.mute()  #Unmutes
+    assert str(TV) == "Power = True, Channel = 0, Volume = 1"
+
+    #test muting when TV's OFF
+    TV.mute()
+    assert str(TV) == "Power = False, Channel = 0, Volume = 0"  #WHen TV's off, VOlume = 0
+
+
 
