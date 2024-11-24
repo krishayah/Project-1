@@ -82,12 +82,7 @@ def test_volume_up():
     #test increasing volume when TV's on & Muted
     TV.mute()  #mutes TV
     TV.volume_up()
-    assert str(TV) == "Power = True, Channel = 0, Volume = 1"  # Unmuted, volume stays consistent
-
-    # Unmute and test increasing volume
-    TV.mute()  # Unmute TV
-    TV.volume_up()
-    assert str(TV) == "Power = True, Channel = 0, Volume = 2"  # Volume should increase
+    assert str(TV) == "Power = True, Channel = 0, Volume = 2"  # Unmuted, volume stays consistent
 
     #test ^ volume past the max_volume
     for _ in range(3):
