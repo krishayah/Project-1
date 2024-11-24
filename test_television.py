@@ -67,7 +67,7 @@ def test_channel_down():
     TV.channel_down()
     assert str(TV) == "Power = True, Channel = 2, Volume = 0"
    
-def volume_up():
+def test_volume_up():
     TV = Television()
 
     #test ^ volume when TV's OFF
