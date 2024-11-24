@@ -81,7 +81,8 @@ class Television:
 
     def __str__(self) -> str:
         """
-        Returns a String that shows current Status of TV
+        Provides a string representation of the Television object.
+        Returns str A string indicating the current power status, channel, and volume of the TV.
         """
         return f"Power = {self._status}, Channel = {self._channel}, Volume = {self._volume}"
 
