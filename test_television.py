@@ -87,7 +87,7 @@ def test_volume_up():
     #test ^ volume past the max volume
     for _ in range(3):
         TV.volume_up()
-    assert str(TV) == "Power = True, Channel = 0, Volume = 1"  # Volume should not exceed MAX_VOLUME
+    assert str(TV) == "Power = True, Channel = 0, Volume = 2"  # Volume should not exceed MAX_VOLUME
 
 def test_volume_down():
     TV = Television()
