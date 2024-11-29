@@ -115,7 +115,7 @@ class UI_TV_REMOTE(object):
         TV_REMOTE.setWindowTitle(_translate("TV_REMOTE", "Television Remote"))
         self.btn_power.setText(_translate("TV_REMOTE", "Power"))
         self.btn_mute.setText(_translate("TV_REMOTE", "Mute"))
-        self.channel_selector.setSpecialValueText(_translate("TV_REMOTE", "Skip to Channel #"))
+        self.channel_selector.setSpecialValueText(_translate("TV_REMOTE", "0"))
         self.btn_channel_up.setText(_translate("TV_REMOTE", "+"))
         self.btn_channel_down.setText(_translate("TV_REMOTE", "-"))
         self.btn_volume_up.setText(_translate("TV_REMOTE", "+"))
