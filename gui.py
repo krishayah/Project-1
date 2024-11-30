@@ -1,50 +1,29 @@
 from PyQt6 import QtCore, QtWidgets
 
-class UI_TV_REMOTE(object):
+class Ui_TV_REMOTE:
     """
-    This class sets up the GUI for a television remote control simulator.
+    A class to define the user interface for a television remote control simulator.
 
-    It includes buttons for controlling power, volume, and channels,
-    a progress bar for volume, and a QLabel for displaying the current channel image.
+    This interface includes buttons for power, mute, volume, and channel control,
+    along with a volume progress bar and a channel display image.
     """
 
-    def setupUi(self, TV_REMOTE):
+    def setupUi(self, TV_REMOTE: QtWidgets.QMainWindow) -> None:
         """
-        Initializes and organizes all GUI elements.
+        Sets up the user interface elements for the television remote.
 
         :param TV_REMOTE: The main application window for the remote simulator.
         """
-        # Set up the main window
+        # Configure the main application window
         TV_REMOTE.setObjectName("TV_REMOTE")
         TV_REMOTE.resize(320, 330)
         TV_REMOTE.setMinimumSize(QtCore.QSize(320, 330))
         TV_REMOTE.setMaximumSize(QtCore.QSize(320, 330))
+
+        # Central widget setup
         self.centralwidget = QtWidgets.QWidget(parent=TV_REMOTE)
         self.centralwidget.setObjectName("centralwidget")
 
-        # Call setup functions for modular code
-        self.setup_buttons()
-        self.setup_labels()
-        self.setup_other_widgets()
-
-        # Finalize setup
-        TV_REMOTE.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(parent=TV_REMOTE)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 320, 37))
-        self.menubar.setObjectName("menubar")
-        TV_REMOTE.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(parent=TV_REMOTE)
-        self.statusbar.setObjectName("statusbar")
-        TV_REMOTE.setStatusBar(self.statusbar)
-
-        # Retranslate UI for setting text on widgets
-        self.retranslateUi(TV_REMOTE)
-        QtCore.QMetaObject.connectSlotsByName(TV_REMOTE)
-
-    def setup_buttons(self):
-        """
-        Sets up the buttons for power, mute, volume, and channel controls.
-        """
         # Power button
         self.btn_power = QtWidgets.QPushButton(parent=self.centralwidget)
         self.btn_power.setGeometry(QtCore.QRect(230, 240, 71, 31))
@@ -55,67 +34,83 @@ class UI_TV_REMOTE(object):
         self.btn_mute.setGeometry(QtCore.QRect(130, 150, 61, 31))
         self.btn_mute.setObjectName("btn_mute")
 
-        # Volume controls
-        self.btn_volume_up = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.btn_volume_up.setGeometry(QtCore.QRect(220, 140, 51, 32))
-        self.btn_volume_up.setObjectName("btn_volume_up")
-        self.btn_volume_down = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.btn_volume_down.setGeometry(QtCore.QRect(220, 190, 51, 32))
-        self.btn_volume_down.setObjectName("btn_volume_down")
+        # Channel selector (SpinBox)
+        self.channel_selector = QtWidgets.QSpinBox(parent=self.centralwidget)
+        self.channel_selector.setGeometry(QtCore.QRect(80, 110, 161, 21))
+        self.channel_selector.setWrapping(True)
+        self.channel_selector.setFrame(True)
+        self.channel_selector.setReadOnly(False)
+        self.channel_selector.setSpecialValueText("")
+        self.channel_selector.setObjectName("channel_selector")
 
-        # Channel controls
+        # Channel up button
         self.btn_channel_up = QtWidgets.QPushButton(parent=self.centralwidget)
         self.btn_channel_up.setGeometry(QtCore.QRect(50, 140, 51, 32))
         self.btn_channel_up.setObjectName("btn_channel_up")
+
+        # Channel down button
         self.btn_channel_down = QtWidgets.QPushButton(parent=self.centralwidget)
         self.btn_channel_down.setGeometry(QtCore.QRect(50, 190, 51, 32))
         self.btn_channel_down.setObjectName("btn_channel_down")
 
-    def setup_labels(self):
-        """
-        Sets up labels for volume, channel, and the channel image.
-        """
-        # Channel image display
-        self.lbl_channel_image = QtWidgets.QLabel(parent=self.centralwidget)
-        self.lbl_channel_image.setGeometry(QtCore.QRect(90, 0, 141, 81))
-        self.lbl_channel_image.setFrameShape(QtWidgets.QFrame.Shape.Box)
-        self.lbl_channel_image.setLineWidth(1)
-        self.lbl_channel_image.setObjectName("lbl_channel_image")
+        # Volume up button
+        self.btn_volume_up = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.btn_volume_up.setGeometry(QtCore.QRect(220, 140, 51, 32))
+        self.btn_volume_up.setObjectName("btn_volume_up")
 
-        # Volume and channel indicators
+        # Volume down button
+        self.btn_volume_down = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.btn_volume_down.setGeometry(QtCore.QRect(220, 190, 51, 32))
+        self.btn_volume_down.setObjectName("btn_volume_down")
+
+        # Channel label
         self.label_channel = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_channel.setGeometry(QtCore.QRect(60, 170, 31, 21))
+        self.label_channel.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.label_channel.setObjectName("label_channel")
 
+        # Volume label
         self.label_volume = QtWidgets.QLabel(parent=self.centralwidget)
         self.label_volume.setGeometry(QtCore.QRect(230, 170, 31, 16))
         self.label_volume.setObjectName("label_volume")
 
-    def setup_other_widgets(self):
-        """
-        Sets up other widgets, including the channel selector and volume progress bar.
-        """
-        # Channel selector
-        self.channel_selector = QtWidgets.QSpinBox(parent=self.centralwidget)
-        self.channel_selector.setGeometry(QtCore.QRect(80, 90, 161, 21))
-        self.channel_selector.setWrapping(True)
-        self.channel_selector.setObjectName("channel_selector")
+        # Channel image display
+        self.lbl_channel_image = QtWidgets.QLabel(parent=self.centralwidget)
+        self.lbl_channel_image.setGeometry(QtCore.QRect(80, 0, 161, 101))
+        self.lbl_channel_image.setFrameShape(QtWidgets.QFrame.Shape.Box)
+        self.lbl_channel_image.setLineWidth(1)
+        self.lbl_channel_image.setObjectName("lbl_channel_image")
 
-        # Volume progress bar
-        self.volume_bar = QtWidgets.QProgressBar(parent=self.centralwidget)
-        self.volume_bar.setGeometry(QtCore.QRect(90, 110, 118, 23))
-        self.volume_bar.setProperty("value", 24)  # Set default volume
-        self.volume_bar.setObjectName("volume_bar")
+        # Finalize main window layout
+        TV_REMOTE.setCentralWidget(self.centralwidget)
 
-    def retranslateUi(self, TV_REMOTE):
+        # Menu bar setup
+        self.menubar = QtWidgets.QMenuBar(parent=TV_REMOTE)
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 320, 37))
+        self.menubar.setObjectName("menubar")
+        TV_REMOTE.setMenuBar(self.menubar)
+
+        # Status bar setup
+        self.statusbar = QtWidgets.QStatusBar(parent=TV_REMOTE)
+        self.statusbar.setObjectName("statusbar")
+        TV_REMOTE.setStatusBar(self.statusbar)
+
+        # Set text for the UI elements
+        self.retranslateUi(TV_REMOTE)
+
+        # Connect UI components to corresponding slots (if any)
+        QtCore.QMetaObject.connectSlotsByName(TV_REMOTE)
+
+    def retranslateUi(self, TV_REMOTE: QtWidgets.QMainWindow) -> None:
         """
-        Sets the text of buttons, labels, and other widgets.
+        Translates the text of the UI elements, ensuring they display the correct labels.
+
+        :param TV_REMOTE: The main application window for the remote simulator.
         """
         _translate = QtCore.QCoreApplication.translate
         TV_REMOTE.setWindowTitle(_translate("TV_REMOTE", "Television Remote"))
         self.btn_power.setText(_translate("TV_REMOTE", "Power"))
         self.btn_mute.setText(_translate("TV_REMOTE", "Mute"))
-        self.channel_selector.setSpecialValueText(_translate("TV_REMOTE", "0"))
         self.btn_channel_up.setText(_translate("TV_REMOTE", "+"))
         self.btn_channel_down.setText(_translate("TV_REMOTE", "-"))
         self.btn_volume_up.setText(_translate("TV_REMOTE", "+"))
@@ -129,7 +124,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     TV_REMOTE = QtWidgets.QMainWindow()
-    ui = UI_TV_REMOTE()
+    ui = Ui_TV_REMOTE()
     ui.setupUi(TV_REMOTE)
     TV_REMOTE.show()
     sys.exit(app.exec())
