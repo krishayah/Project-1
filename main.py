@@ -21,6 +21,10 @@ class TVRemoteApp(QtWidgets.QMainWindow):
             3: "images/channel3.png",
         }
 
+        # Restrict SpinBox to valid channel range
+        self.ui.channel_selector.setMinimum(1)  # Minimum channel
+        self.ui.channel_selector.setMaximum(3)  # Maximum channel
+
         # Connect Buttons to Methods
         self.ui.btn_power.clicked.connect(self.toggle_power)
         self.ui.btn_mute.clicked.connect(self.toggle_mute)
@@ -121,7 +125,7 @@ class TVRemoteApp(QtWidgets.QMainWindow):
         if self.tv._muted:
             self.ui.label_volume.setText("Muted")
         else:
-            self.ui.label_volume.setText(f"VOL: {self.tv._volume}")
+            self.ui.label_volume.setText(f"VOL:{self.tv._volume}")
 
 
 if __name__ == "__main__":

@@ -65,13 +65,13 @@ class Ui_TV_REMOTE:
 
         # Channel label
         self.label_channel = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label_channel.setGeometry(QtCore.QRect(60, 170, 31, 21))
+        self.label_channel.setGeometry(QtCore.QRect(60, 170, 35, 21))
         self.label_channel.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.label_channel.setObjectName("label_channel")
 
         # Volume label
         self.label_volume = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label_volume.setGeometry(QtCore.QRect(230, 170, 31, 16))
+        self.label_volume.setGeometry(QtCore.QRect(230, 170, 37, 16))
         self.label_volume.setObjectName("label_volume")
 
         # Channel image display
