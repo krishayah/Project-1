@@ -76,8 +76,25 @@ class TVRemoteApp(QtWidgets.QMainWindow):
         # Update power state
         if self.tv._status:
             self.ui.btn_power.setText("ON")
+            # Update channel image
+            if self.tv._channel == 0:
+                self.ui.lbl_channel_image.clear()  # Keep the image area blank
+                self.ui.lbl_channel_image.setStyleSheet("background-color: black;")  # Black background
+            else:
+                channel_image_path = self.channel_images.get(self.tv._channel, "")
+                if channel_image_path:
+                    pixmap = QtGui.QPixmap(channel_image_path)
+                    self.ui.lbl_channel_image.setPixmap(pixmap)
+                    self.ui.lbl_channel_image.setScaledContents(True)
+                else:
+                    self.ui.lbl_channel_image.clear()
+                    self.ui.lbl_channel_image.setText("No Image")
         else:
             self.ui.btn_power.setText("OFF")
+            # Power off: reset channel to black
+            self.ui.lbl_channel_image.clear()
+            self.ui.lbl_channel_image.setStyleSheet("background-color: black;")
+
 
         # Update mute state
         if self.tv._muted:
