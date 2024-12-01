@@ -111,7 +111,7 @@ class TVRemoteApp(QtWidgets.QMainWindow):
 
         # Update channel image
         if self.tv._status:
-            channel_image_path = self.channel_images.get(self.tv._channel, "")
+            channel_image_path = self.channel_images.get(self.tv._channel)
             if channel_image_path:
                 pixmap = QtGui.QPixmap(channel_image_path)
                 self.ui.lbl_channel_image.setPixmap(pixmap)
@@ -128,7 +128,7 @@ class TVRemoteApp(QtWidgets.QMainWindow):
         if self.tv._muted:
             self.ui.label_volume.setText("Muted")
         else:
-            self.ui.label_volume.setText(f"VOL:{self.tv._volume}")
+            self.ui.label_volume.setText(f"VOL: {self.tv._volume}")
 
 
 if __name__ == "__main__":
