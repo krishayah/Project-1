@@ -21,12 +21,14 @@ class TVRemoteApp(QtWidgets.QMainWindow):
             3: "images/channel3.png",
             4: "images/channel4.png",
             5: "images/channel5.png",
+            6: "images/channel6.png",
+            7: "images/channel7.png",
 
         }
 
         # Restrict SpinBox to valid channel range
         self.ui.channel_selector.setMinimum(1)  # Minimum channel
-        self.ui.channel_selector.setMaximum(5)  # Maximum channel
+        self.ui.channel_selector.setMaximum(7)  # Maximum channel
 
         # Connect Buttons to Methods
         self.ui.btn_power.clicked.connect(self.toggle_power)
