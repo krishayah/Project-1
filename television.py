@@ -1,9 +1,9 @@
 class Television:
     # Default values
     MIN_VOLUME = 0
-    MAX_VOLUME = 2
+    MAX_VOLUME = 10
     MIN_CHANNEL = 0
-    MAX_CHANNEL = 3
+    MAX_CHANNEL = 5
 
     def __init__(self):
         self._status = False

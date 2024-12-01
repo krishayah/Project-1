@@ -26,7 +26,7 @@ class TVRemoteApp(QtWidgets.QMainWindow):
 
         # Restrict SpinBox to valid channel range
         self.ui.channel_selector.setMinimum(1)  # Minimum channel
-        self.ui.channel_selector.setMaximum(3)  # Maximum channel
+        self.ui.channel_selector.setMaximum(5)  # Maximum channel
 
         # Connect Buttons to Methods
         self.ui.btn_power.clicked.connect(self.toggle_power)
