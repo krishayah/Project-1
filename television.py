@@ -27,7 +27,10 @@ class Television:
 
     def channel_up(self):
         if self._status:  # Only works when TV is ON
-            self._channel = self.MIN_CHANNEL if self._channel == self.MAX_CHANNEL else self._channel + 1
+            if self._channel == self.MAX_CHANNEL:
+                self._channel = self.MIN_CHANNEL + 1  #skip channel 0 & start @ 1
+            else:
+                self._channel += 1
 
     def channel_down(self):
         if self._status:  # Only works when TV is ON

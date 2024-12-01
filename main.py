@@ -92,7 +92,7 @@ class TVRemoteApp(QtWidgets.QMainWindow):
                     self.ui.lbl_channel_image.setScaledContents(True)
                 else:
                     self.ui.lbl_channel_image.clear()
-                    self.ui.lbl_channel_image.setText("No Image")
+
         else:
             self.ui.btn_power.setText("OFF")
             # Power off: reset channel to black
