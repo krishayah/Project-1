@@ -71,7 +71,7 @@ class Ui_TV_REMOTE:
 
         # Volume label
         self.label_volume = QtWidgets.QLabel(parent=self.centralwidget)
-        self.label_volume.setGeometry(QtCore.QRect(225, 170, 47, 16))
+        self.label_volume.setGeometry(QtCore.QRect(220, 170, 50, 16))
         self.label_volume.setObjectName("label_volume")
 
         # Channel image display
