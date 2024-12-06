@@ -23,7 +23,6 @@ class TVRemoteApp(QtWidgets.QMainWindow):
             5: "images/channel5.png",
             6: "images/channel6.png",
             7: "images/channel7.png",
-
         }
 
         # Restrict SpinBox to valid channel range
