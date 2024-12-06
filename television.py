@@ -3,25 +3,19 @@ class Television:
     Class with basic functionality of TV
     """
     # Default values
-    MIN_VOLUME: int = 0
-    MAX_VOLUME: int = 2
-    MIN_CHANNEL: int = 0
-    MAX_CHANNEL: int = 3
+    MIN_VOLUME = 0
+    MAX_VOLUME = 25
+    MIN_CHANNEL = 0
+    MAX_CHANNEL = 7
 
-    def __init__(self) -> None:
-        """
-        Initialize TV with Default settings
-        """
-        self._status: bool = False
-        self._muted: bool = False
-        self._volume: int = self.MIN_VOLUME
-        self._channel: int = self.MIN_CHANNEL  # Start at minimum channel
-        self._previous_volume: int = self.MIN_VOLUME
+    def __init__(self):
+        self._status = False
+        self._muted = False
+        self._volume = self.MIN_VOLUME
+        self._channel = self.MIN_CHANNEL  # Start at minimum channel
+        self._previous_volume = self.MIN_VOLUME
 
-    def power(self) -> None:
-        """
-        To Toggle Power Status of TV
-        """
+    def power(self):
         self._status = not self._status  # Toggle power
 
     def mute(self) -> None:
@@ -45,7 +39,10 @@ class Television:
         Wraps around to MINIMUM Channel.
         """
         if self._status:  # Only works when TV is ON
-            self._channel = self.MIN_CHANNEL if self._channel == self.MAX_CHANNEL else self._channel + 1
+            if self._channel == self.MAX_CHANNEL:
+                self._channel = self.MIN_CHANNEL + 1  #skip channel 0 & start @ 1
+            else:
+                self._channel += 1
 
     def channel_down(self) -> None:
         """
