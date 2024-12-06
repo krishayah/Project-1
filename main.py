@@ -103,6 +103,11 @@ class TVRemoteApp(QtWidgets.QMainWindow):
             self.ui.lbl_channel_image.clear()
             self.ui.lbl_channel_image.setStyleSheet("background-color: black;")
 
+        # Enable or disable channel selector based on TV power status
+        self.ui.channel_selector.setEnabled(self.tv._status)
+
+        # Enable or disable channel selector based on TV power status
+        self.ui.channel_selector.setEnabled(self.tv._status)
 
         # Update mute state
         if self.tv._muted:
